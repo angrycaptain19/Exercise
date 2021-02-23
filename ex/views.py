@@ -78,21 +78,21 @@ def update_answer(request):
     answer_form = AnswerForm(request.POST)
     if not request.user.is_authenticated:
         return render(request, 'error.html', {'message': '您当前未在登录状态'})
-    if answer_form.is_valid():
-        # 检查通过保存数据
-        referer = request.META.get('HTTP_REFERER', '/ex')
-        question = Question.objects.get(pk=answer_form.cleaned_data['question_pk'])
-        now_time = datetime.datetime.utcnow().replace(tzinfo=utc)
-        deadline = question.deadline.replace(tzinfo=utc)
-        answer = Answer()
-        answer.isTimeout = now_time > deadline
-        answer.student = request.user
-        answer.answer_text = answer_form.cleaned_data['answer_text']
-        answer.question = question
-        answer.save()
-        return redirect(referer)
-    else:
+    if not answer_form.is_valid():
         return render(request, 'error.html', {'message': answer_form.errors})
+
+    # 检查通过保存数据
+    referer = request.META.get('HTTP_REFERER', '/ex')
+    question = Question.objects.get(pk=answer_form.cleaned_data['question_pk'])
+    now_time = datetime.datetime.utcnow().replace(tzinfo=utc)
+    deadline = question.deadline.replace(tzinfo=utc)
+    answer = Answer()
+    answer.isTimeout = now_time > deadline
+    answer.student = request.user
+    answer.answer_text = answer_form.cleaned_data['answer_text']
+    answer.question = question
+    answer.save()
+    return redirect(referer)
 
 
 def question_upload(request):
