@@ -1,0 +1,79 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin-top: 50px!important;
+}
+ul{
+    list-style-type: none!important;
+}
+.navbar{
+    text-align:center
+}
+
+.errorlist{
+    font-weight: bold;
+	color: red;
+}
+.bs-docs-footer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin-top: 50px;
+    color: #563d7c;
+    text-align: center;
+    background-color: RGB(244, 245, 247)
+}
+
+.bs-docs-footer a {
+    color: #563d7c
+}
+
+.bs-docs-footer-links {
+    padding-left: 0;
+    margin-bottom: 20px
+}
+
+.bs-docs-footer-links li {
+    display: inline-block
+}
+
+.bs-docs-footer-links li+li {
+    margin-left: 15px
+}
+.bs-docs-nav {
+    margin-bottom: 0;
+    background-color: #fff;
+    border-bottom: 0
+}
+
+.bs-home-nav .bs-nav-b {
+    display: none
+}
+
+.bs-docs-nav .navbar-brand,
+.bs-docs-nav .navbar-nav>li>a {
+    font-weight: 500;
+    color: #563d7c
+}
+
+.bs-docs-nav .navbar-nav>.active>a,
+.bs-docs-nav .navbar-nav>.active>a:hover,
+.bs-docs-nav .navbar-nav>li>a:hover {
+    color: #463265;
+    background-color: #f9f9f9
+}
+
+.bs-docs-nav .navbar-toggle .icon-bar {
+    background-color: #563d7c
+}
+
+.bs-docs-nav .navbar-header .navbar-toggle {
+    border-color: #fff
+}
+
+.bs-docs-nav .navbar-header .navbar-toggle:focus,
+.bs-docs-nav .navbar-header .navbar-toggle:hover {
+    background-color: #f9f9f9;
+    border-color: #f9f9f9
+}

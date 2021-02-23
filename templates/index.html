@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+超算基地做题网站
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{% static 'index.css' %}">
+{% endblock %}
+{% block nav_index_active %}
+active
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="jumbotron">
+            <h1 class="index-title">Hello, 同学!</h1>
+            <p>欢迎来到超算基地做题网站</p>
+            <p><a class="btn btn-primary btn-lg" href="{% url 'question_list' %}" role="button">查看题目列表</a></p>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

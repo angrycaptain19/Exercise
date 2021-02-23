@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+题目列表
+{% endblock %}
+
+{% block nav_question_list_active %}
+    active
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="alert alert-success" role="alert">
+        <p>一共有{{ questions|length }}道测试</p>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-8 col-md-9 col-lo-10">
+            {% for question in questions %}
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <a href="{% url 'question_detail' question.pk %}">
+                        <h3 class="panel-title">
+                            {{ question.title }}
+                        </h3>
+                    </a>
+                </div>
+                <div class="panel-body">
+                    <p>{{ question.question_text|striptags|truncatechars:50 }}...</p>
+                </div>
+            </div>
+
+            {% empty %}
+            暂时无内容
+            {% endfor %}
+            <nav aria-label="Page navigation" class="paginator">
+                <ul class="pagination">
+                    <li>
+                        {% if page_of_blogs.has_previous %}
+                        <a href="?page={{ page_of_questions.previous_page_number }}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                        {% else %}
+                        <span aria-hidden="true">&laquo;</span>
+                        {% endif %}
+                    </li>
+                    {% for page_num in page_list_nums %}
+                    {% if page_num == page_of_questions.number %}
+                    <li class="active"><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                    {% else %}
+                    <li><a href="?page={{ page_num }}">{{ page_num }}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    <li>
+                        {% if page_of_blogs.has_next %}
+                        <a href="?page={{ page_of_questions.next_page_number }}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                        {% else %}
+                        <span aria-hidden="true">&raquo;</span>
+                        {% endif %}
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
